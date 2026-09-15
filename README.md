@@ -1,58 +1,362 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sila — Digital Services & Entrepreneurship Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sila is a web-based platform designed to connect companies with freelancers who provide professional and digital services.
 
-## About Laravel
+The platform provides a structured environment where companies can discover freelancers, publish service requests, review proposals, communicate with freelancers, and manage projects. Freelancers can build their professional profiles, showcase their portfolios and specialties, discover available opportunities, submit proposals, manage projects and deliverables, and track their earnings.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Project Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The goal of Sila is to provide a centralized platform for managing the relationship between companies and independent service providers throughout the project lifecycle.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Instead of limiting the platform to finding a freelancer, Sila covers multiple stages of the process:
 
-## Learning Laravel
+**Discover → Request → Proposal → Communication → Project → Deliverables → Payment → Withdrawal**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+The first phase of the system focuses on establishing the core platform infrastructure and implementing the main workflows for both companies and freelancers.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Main Users
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### Companies
 
-## Agentic Development
+Companies can:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+* Create and manage a company profile
+* Explore available freelancers
+* Create service requests (briefs)
+* Make requests publicly available or target a specific freelancer
+* Receive and review freelancer proposals
+* Accept or reject proposals
+* Communicate with freelancers
+* Track projects and submitted deliverables
 
-```bash
-composer require laravel/boost --dev
+### Freelancers
 
-php artisan boost:install
+Freelancers can:
+
+* Create and manage a professional profile
+* Add professional specialties and experienced sectors
+* Create and manage portfolio entries
+* Browse available service requests
+* Search for relevant opportunities
+* Submit project proposals
+* Define project pricing, timeline, revisions, and terms
+* Break proposals into milestones
+* Manage active projects
+* Submit project deliverables
+* Respond to revision requests
+* Track earnings and transactions
+* Submit withdrawal requests
+
+## Core Workflow
+
+A typical project can move through the following process:
+
+```text
+Company
+   │
+   ▼
+Create Service Request
+   │
+   ▼
+Freelancers Discover Request
+   │
+   ▼
+Freelancer Submits Proposal
+   │
+   ▼
+Company Reviews Proposal
+   │
+   ├── Reject
+   │
+   └── Accept
+          │
+          ▼
+      Project Created
+          │
+          ▼
+    Project Deliverables
+          │
+          ▼
+   Freelancer Submits Work
+          │
+          ▼
+     Client Review
+          │
+       ┌──┴──┐
+       │     │
+    Revision  Approved
+       │     │
+       └─────┘
+          │
+          ▼
+    Project Completion
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## Main Features
 
-## Contributing
+### Authentication & User Management
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* Freelancer and company registration
+* Login and logout
+* Role-based access
+* Session-based authentication
+* Supabase authentication integration
+* Identity-document upload during registration
 
-## Code of Conduct
+### Company Management
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* Company profile
+* Company settings
+* Freelancer discovery
+* Service request creation
+* Service request editing and deletion
+* Public or freelancer-specific requests
+* Proposal review
+* Proposal acceptance/rejection
+* Company–freelancer conversations
 
-## Security Vulnerabilities
+### Freelancer Management
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* Freelancer profile
+* Professional biography and job title
+* Marketing specialties
+* Experienced sectors
+* Portfolio management
+* Freelancer discovery
+* Opportunity search
 
-## License
+### Proposals & Negotiation
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Freelancers can create proposals containing:
+
+* Project title
+* Price
+* Timeline
+* Revision limit
+* Proposal validity
+* Additional terms
+* Project milestones
+
+Companies can review submitted proposals and either accept or reject them.
+
+### Project Management
+
+When a company accepts a proposal, the platform creates an associated project.
+
+Projects support:
+
+* Active and completed project states
+* Deliverables/tasks
+* Progress calculation
+* Sequential task workflow
+* File submissions
+* External links
+* Notes
+* Client feedback
+* Revision requests
+* Project completion
+
+### Communication
+
+The platform provides company–freelancer conversations associated with projects and proposals.
+
+Users can exchange messages and view conversation history directly through the platform.
+
+### Earnings & Withdrawals
+
+Freelancers have access to an earnings section containing:
+
+* Available balance
+* Pending balance
+* Lifetime earnings
+* Verified project transactions
+* Transaction history
+* Monthly earnings data
+* Daily earnings data
+* Withdrawal requests
+
+Supported withdrawal methods currently include bank, Jeeb, and local withdrawal options.
+
+## Technology Stack
+
+### Backend
+
+* **Laravel**
+* PHP
+* Laravel Eloquent ORM
+* Laravel validation
+* Laravel sessions
+* Laravel controllers and middleware
+
+### Frontend
+
+* **React**
+* **Inertia.js**
+* Tailwind CSS
+* Vite
+* Lucide icons
+
+The frontend uses React pages/components while Inertia connects the React interface with the Laravel backend.
+
+### Authentication & Storage
+
+* **Supabase Authentication**
+* **Supabase Storage**
+* S3-compatible storage integration
+
+Supabase is used for authentication and application file storage, while Laravel manages application logic and local user/profile data.
+
+### Database
+
+The application uses a relational PostgreSQL-based database structure containing entities such as:
+
+* Users
+* Freelancers
+* Client companies
+* Portfolios
+* Briefs
+* Proposals
+* Proposal milestones
+* Projects
+* Deliverables
+* Conversations
+* Messages
+* Transactions
+* Wallets
+* Withdrawal requests
+
+## Application Architecture
+
+The application follows a Laravel backend architecture with React-based frontend interfaces.
+
+```text
+                 ┌──────────────────────┐
+                 │      React UI        │
+                 │  Company / Freelancer│
+                 └──────────┬───────────┘
+                            │
+                         Inertia
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │   Laravel Routes     │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │     Controllers      │
+                 │ Authentication       │
+                 │ Company              │
+                 │ Freelancer           │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │   Eloquent Models    │
+                 └──────────┬───────────┘
+                            │
+                            ▼
+                 ┌──────────────────────┐
+                 │    PostgreSQL DB     │
+                 └──────────────────────┘
+
+                  ┌───────────────────┐
+                  │     Supabase      │
+                  │ Auth + Storage    │
+                  └───────────────────┘
+```
+
+## Role-Based Access
+
+The application separates the two primary user roles.
+
+```text
+                         Sila
+                          │
+              ┌───────────┴───────────┐
+              │                       │
+           Company                Freelancer
+              │                       │
+       Company Dashboard       Freelancer Dashboard
+              │                       │
+       Manage Requests          Find Opportunities
+       Review Proposals         Submit Proposals
+       Manage Projects          Manage Projects
+       Communicate              Manage Portfolio
+                                Track Earnings
+```
+
+Routes are protected using authentication and role middleware so that company and freelancer functionality is separated.
+
+## Security & Validation
+
+The application performs server-side validation for major operations, including:
+
+* Registration data
+* Email addresses
+* Password requirements
+* Uploaded documents
+* Profile information
+* Service requests
+* Proposals
+* Deliverables
+* Messages
+* Withdrawal requests
+
+Authorization checks are also applied to ensure users can access resources associated with their own accounts.
+
+## Project Status
+
+This repository represents the **first phase of development** of the Sila platform.
+
+The first phase establishes the main application structure and implements the core interaction between companies and freelancers, including authentication, profiles, service requests, proposals, projects, communication, deliverables, and freelancer earnings.
+
+Some areas are still under development and may contain placeholder data or TODO items as the project continues to evolve.
+
+## Future Development
+
+Potential future development areas include:
+
+* More complete payment processing
+* Automated payment verification
+* Reviews and ratings
+* Improved project analytics
+* Notifications
+* More advanced freelancer discovery and matching
+* Administrative management
+* Additional entrepreneurship-focused features
+* Improved reporting and monitoring
+* Production deployment and optimization
+
+## Project Structure
+
+The main Laravel application follows a conventional structure:
+
+```text
+app/
+├── Http/
+│   └── Controllers/
+│       ├── Auth/
+│       ├── Company/
+│       └── Freelancer/
+│
+├── Models/
+└── Services/
+
+resources/
+├── js/
+│   ├── company_side/
+│   └── freelancer/
+│
+└── css/
+
+routes/
+└── web.php
+
+config/
+└── ...
+```
+
+## Important Note
+
+This project is currently a development/academic project and should not be considered a production-ready marketplace without further security review, payment implementation, testing, infrastructure configuration, and deployment hardening.
